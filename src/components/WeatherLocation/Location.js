@@ -1,4 +1,6 @@
 import React from "react";
+// Importamos propType para validar los datos que pasamos por parametros
+import PropTypes from 'prop-types';
 
 const Location = (props) => {
 
@@ -11,5 +13,9 @@ const Location = (props) => {
         </div>
     );
 };
+
+Location.propTypes = {
+    city: PropTypes.string.isRequired
+}
 
 export default Location;

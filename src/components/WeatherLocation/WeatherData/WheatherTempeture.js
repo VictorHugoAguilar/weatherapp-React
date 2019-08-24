@@ -8,7 +8,9 @@ import {
     WINDY,
     SNOW,
     FOG
-} from "../constants/weather";
+} from "../../../constants/weather";
+import PropTypes from 'prop-types';
+
 
 const icons = {
     [CLOUD]: "cloud",
@@ -35,5 +37,12 @@ const WheaterTemperature = props => {
         </div>
     );
 };
+
+WheaterTemperature.propTypes = {
+    temperature : PropTypes.number.isRequired,
+    weatherState: PropTypes.string.isRequired,
+}
+
+
 
 export default WheaterTemperature;

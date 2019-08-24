@@ -1,19 +1,19 @@
 import React from "react";
 import Location from "./Location";
-import WheatherData from "./WheatherData";
+import WeatherData from "./WeatherData";
 
 // Componente funcional
-const WheaterLoation = () => {
+const WeatherLocation = () => {
     return (
         <div>
             <div>
                 <Location city={"Alicante"} />
             </div>
             <div>
-                <WheatherData />
+                <WeatherData />
             </div>
         </div>
     );
 };
 
-export default WheaterLoation;
+export default WeatherLocation;

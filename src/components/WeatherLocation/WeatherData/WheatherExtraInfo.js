@@ -1,4 +1,7 @@
 import React from "react";
+// Importamos propType para validar los datos que pasamos por parametros
+import PropTypes from 'prop-types';
+
 
 const WheatherExtraInfo = props => {
     // destructuring
@@ -10,5 +13,10 @@ const WheatherExtraInfo = props => {
         </div>
     );
 };
+
+WheatherExtraInfo.propTypes = {
+    huminity: PropTypes.number.isRequired,
+    wind: PropTypes.string.isRequired,
+}
 
 export default WheatherExtraInfo;
