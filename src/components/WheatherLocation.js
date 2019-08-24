@@ -1,16 +1,17 @@
 import React from "react";
 import Location from "./Location";
-import WheatherData from './WheatherData';
+import WheatherData from "./WheatherData";
 
 // Componente funcional
 const WheaterLoation = () => {
-    return (<div>
+    return (
         <div>
-            <Location />
-        </div>
-        <div>
-    <WheatherData/>            
-        </div>
+            <div>
+                <Location city={"Alicante"} />
+            </div>
+            <div>
+                <WheatherData />
+            </div>
         </div>
     );
 };

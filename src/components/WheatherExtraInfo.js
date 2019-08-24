@@ -1,9 +1,12 @@
 import React from "react";
 
-const WheatherExtraInfo = () => {
+const WheatherExtraInfo = props => {
+    // destructuring
+    const { huminity, wind } = props;
     return (
         <div>
-            <p>WheatherExtraInfo</p>
+            <span>{`Humedad: ${huminity} %` }</span><br/>
+            <span>{`Viento: ${wind} `}</span>
         </div>
     );
 };
