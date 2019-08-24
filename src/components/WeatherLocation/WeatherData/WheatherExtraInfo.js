@@ -1,15 +1,16 @@
 import React from "react";
 // Importamos propType para validar los datos que pasamos por parametros
 import PropTypes from 'prop-types';
+import './styles.css'
 
 
 const WheatherExtraInfo = props => {
     // destructuring
     const { huminity, wind } = props;
     return (
-        <div>
-            <span>{`Humedad: ${huminity} %` }</span><br/>
-            <span>{`Viento: ${wind} `}</span>
+        <div className="weatherExtraCont">
+            <div className="extraInfoText">{`Humedad: ${huminity} %` }</div>
+            <div className="extraInfoText">{`Vientos: ${wind} `}</div>
         </div>
     );
 };

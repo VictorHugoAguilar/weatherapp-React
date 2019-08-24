@@ -13,10 +13,11 @@ import {
     SNOW,
     FOG
 } from "../../../constants/weather";
+import './styles.css';
 
 const WheaterData = () => {
     return (
-        <div>
+        <div className="weatherDataCont">
             <WheatherTemperature temperature={23} weatherState={""} />
             <WheatherExtraInfo huminity={80} wind={"10 m/s"} />
         </div>

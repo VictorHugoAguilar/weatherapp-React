@@ -1,11 +1,12 @@
 import React from "react";
 import Location from "./Location";
 import WeatherData from "./WeatherData";
+import './styles.css'
 
 // Componente funcional
 const WeatherLocation = () => {
     return (
-        <div>
+        <div className="weatherLocationCont">
             <div>
                 <Location city={"Alicante"} />
             </div>

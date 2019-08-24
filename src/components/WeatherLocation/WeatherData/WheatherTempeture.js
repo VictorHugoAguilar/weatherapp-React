@@ -10,6 +10,7 @@ import {
     FOG
 } from "../../../constants/weather";
 import PropTypes from 'prop-types';
+import './styles.css'
 
 
 const icons = {
@@ -22,18 +23,22 @@ const icons = {
     [FOG]: "day-fog"
 };
 
+const sizeIcon = "4x";
+
 const getWeatherIcon = weaterState => {
     const icon = icons[weaterState];
-    if (icon) return <WeatherIcons name={icon} size="2x" />;
-    else return <WeatherIcons name={icons[SUN]} size="2x" />;
+    if (icon) return <WeatherIcons  className="wicon" name={icon} size={sizeIcon} />;
+    else return <WeatherIcons  className="wicon" name={icons[SUN]} size={sizeIcon} />;
 };
 
 const WheaterTemperature = props => {
     const { temperature, weatherState } = props;
 
     return (
-        <div>
-            {getWeatherIcon(weatherState)} <span>{`${temperature} º C`}</span>
+        <div className="weatherTempCont">
+            {getWeatherIcon(weatherState)}
+            <span className="temperature"  >{`${temperature} `}</span>
+            <span className="temperatureType"  >{`º C`}</span>
         </div>
     );
 };
