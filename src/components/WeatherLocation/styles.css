@@ -1,12 +1,15 @@
 .weatherLocationCont {
-    width: 400;
+    display: inline-block;
+    float: left;
+    width: 60%;
     padding: 25px;
     font-family: 'Roboto', sans-serif;
-    box-shadow: 10px 10px 40px -12px 
+    box-shadow: 10px 10px 40px -12px
 }
 
 
 .locationCont {
+    margin: 0px 0px 10px;
     width: 100%;
     height: 35px;
     text-align: left;
@@ -14,7 +17,7 @@
     color: gray;
     line-height: 35px;
 }
+
 .locationCont h1 {
     margin: 0;
 }
-
