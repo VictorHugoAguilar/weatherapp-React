@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 // Importamos propType para validar los datos que pasamos por parametros
-import PropTypes from 'prop-types';
-import WheatherExtraInfo from "./WheatherExtraInfo";
-import WheatherTemperature from "./WheatherTempeture";
+import PropTypes from "prop-types";
+import WeatherExtraInfo from "./WeatherExtraInfo";
+import WeatherTemperature from "./WeatherTempeture";
 import {
     CLOUD,
     CLOUDY,
@@ -13,17 +13,20 @@ import {
     SNOW,
     FOG
 } from "../../../constants/weather";
-import './styles.css';
+import "./styles.css";
 
-const WheaterData = () => {
+const WeatherData = ({ data }) => {
+    const { temperature, weatherState, humidity, wind } = data;
+
     return (
         <div className="weatherDataCont">
-            <WheatherTemperature temperature={23} weatherState={""} />
-            <WheatherExtraInfo huminity={80} wind={"10 m/s"} />
+            <WeatherTemperature
+                temperature={temperature}
+                weatherState={weatherState}
+            />
+            <WeatherExtraInfo huminity={humidity} wind={wind} />
         </div>
     );
 };
 
-
-
-export default WheaterData;
+export default WeatherData;

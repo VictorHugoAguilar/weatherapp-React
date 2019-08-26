@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './styles.css'
 
 
-const WheatherExtraInfo = props => {
+const WeatherExtraInfo = props => {
     // destructuring
     const { huminity, wind } = props;
     return (
@@ -15,9 +15,9 @@ const WheatherExtraInfo = props => {
     );
 };
 
-WheatherExtraInfo.propTypes = {
+WeatherExtraInfo.propTypes = {
     huminity: PropTypes.number.isRequired,
     wind: PropTypes.string.isRequired,
 }
 
-export default WheatherExtraInfo;
+export default WeatherExtraInfo;
