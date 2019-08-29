@@ -12,6 +12,9 @@ import {
     SNOW,
     FOG
 } from "../../constants/weather";
+import { api_weather } from "../../constants/api_url";
+
+import transformWeather from "../services/transformWeather";
 
 const data = {
     temperature: 15,
@@ -22,18 +25,31 @@ const data = {
 
 // Class component funcional
 class WeatherLocation extends Component {
-
     constructor() {
         super();
         this.state = {
             city: "Alicante",
-            data: data,
-        }
+            data: data
+        };
     }
 
     handleUpdateClick = () => {
+        fetch(api_weather)
+            .then(resolve => {
+                return resolve.json();
+            })
+            .then(data => {
+                console.log(data);
+                const newWether = transformWeather(data);
+                this.setState({
+                    data: newWether
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            });
         console.log("Actualizado");
-    }
+    };
 
     render() {
         const { city, data } = this.state;
@@ -45,7 +61,13 @@ class WeatherLocation extends Component {
                 <div>
                     <WeatherData data={data} />
                 </div>
-                <button type="button" className="btn btn-primary mt-3" onClick={this.handleUpdateClick} >Actualizar</button>
+                <button
+                    type="button"
+                    className="btn btn-primary mt-3"
+                    onClick={this.handleUpdateClick}
+                >
+                    Actualizar
+                </button>
             </div>
         );
     }
