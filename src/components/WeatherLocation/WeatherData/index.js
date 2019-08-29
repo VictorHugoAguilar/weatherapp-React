@@ -11,11 +11,15 @@ const WeatherData = ({ data }) => {
 
     return (
         <div className="weatherDataCont">
-            <WeatherTemperature
-                temperature={temperature}
-                weatherState={weatherState}
-            />
-            <WeatherExtraInfo huminity={humidity} wind={wind} />
+            <div className="weatherTempConte">
+                <WeatherTemperature
+                    temperature={temperature}
+                    weatherState={weatherState}
+                />
+            </div>
+            <div className="weatherExtraConte">
+                <WeatherExtraInfo huminity={humidity} wind={wind} />
+            </div>
         </div>
     );
 };

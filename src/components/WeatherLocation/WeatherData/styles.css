@@ -1,16 +1,9 @@
 .weatherDataCont {
     padding: 10px;
     width: 100%;
-    line-height: 100px;
+    line-height: 25px;
     background-color: darkcyan;
-    border-radius: 15px;
-    
-}
-
-.weatherTempCont {
-    align-content: space-around;
-    width: 40%;
-    display: inline-block;
+    border-radius: 20px;
 }
 
 .weatherExtraCont {
@@ -18,10 +11,35 @@
     display: inline-block;
 }
 
-.temperature {
-    font-size: 30px;
+.weatherTempConte {
+    display: inline-block;
+    width: 40%;
+}
+
+.weatherExtraConte {
+    display: inline-block;
+}
+
+
+.extraInfoText {
+    color: white;
+    padding: 5px;
+    font-size: 16px;
     font-weight: bold;
-    padding-left: 20px;
+}
+
+.weatherTempCont {
+    align-content: space-around;
+}
+
+.tempDisplay {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.temperature {
+    font-size: 25px;
+    font-weight: bold;
     color: darkslategrey;
 }
 
@@ -29,19 +47,11 @@
     font-weight: bold;
     color: coral;
     font-size: 20px;
-
-}
-
-.extraInfoText {
-    color: white;
-    margin: 5px;
-    padding: 5px;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
-    
 }
 
 .wicon {
-    color: coral
+    display: inline-block;
+    color: coral;
+    margin-top: 5px;
+
 }

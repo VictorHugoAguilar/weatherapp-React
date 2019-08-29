@@ -1,22 +1,26 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
+
 import Location from "./Location";
 import WeatherData from "./WeatherData";
+import getUrlWeatherByCity from "../services/getUrlWeatherByCity";
+
+import PropTypes from "prop-types";
+
 import "./styles.css";
 
-import { api_weather } from "../../constants/api_url";
 import transformWeather from "../services/transformWeather";
 
 // Importamos spinner
-import CircularProgress from '@material-ui/core/CircularProgress';
-
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 // Class component funcional
 class WeatherLocation extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        const { city } = props;
         this.state = {
-            city: "Alicante",
+            city: city,
             data: null
         };
     }
@@ -27,6 +31,7 @@ class WeatherLocation extends Component {
     }
 
     handleUpdateClick = () => {
+        const api_weather = getUrlWeatherByCity(this.state.city);
         fetch(api_weather)
             .then(resolve => {
                 return resolve.json();
@@ -51,11 +56,17 @@ class WeatherLocation extends Component {
                 <div>
                     <Location city={city} />
                 </div>
-                <div>{data ? <WeatherData data={data} /> : <CircularProgress/>}</div>
+                <div>
+                    {data ? <WeatherData data={data} /> : <CircularProgress />}
+                </div>
             </div>
         );
     }
 }
+
+WeatherLocation.propsType = {
+    city: PropTypes.string.isRequired
+};
 
 export default WeatherLocation;
 
