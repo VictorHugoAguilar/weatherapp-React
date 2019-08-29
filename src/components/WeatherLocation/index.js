@@ -3,25 +3,13 @@ import React, { Component } from "react";
 import Location from "./Location";
 import WeatherData from "./WeatherData";
 import "./styles.css";
-import {
-    CLOUD,
-    CLOUDY,
-    RAIN,
-    SUN,
-    WINDY,
-    SNOW,
-    FOG
-} from "../../constants/weather";
-import { api_weather } from "../../constants/api_url";
 
+import { api_weather } from "../../constants/api_url";
 import transformWeather from "../services/transformWeather";
 
-const data = {
-    temperature: 15,
-    weatherState: SNOW,
-    humidity: 14,
-    wind: "20 m/s"
-};
+// Importamos spinner
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 // Class component funcional
 class WeatherLocation extends Component {
@@ -29,8 +17,13 @@ class WeatherLocation extends Component {
         super();
         this.state = {
             city: "Alicante",
-            data: data
+            data: null
         };
+    }
+
+    componentDidMount() {
+        // console.log("componentDidMount");
+        this.handleUpdateClick();
     }
 
     handleUpdateClick = () => {
@@ -39,7 +32,7 @@ class WeatherLocation extends Component {
                 return resolve.json();
             })
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 const newWether = transformWeather(data);
                 this.setState({
                     data: newWether
@@ -48,7 +41,7 @@ class WeatherLocation extends Component {
             .catch(error => {
                 console.log(error);
             });
-        console.log("Actualizado");
+        // console.log("Actualizado");
     };
 
     render() {
@@ -58,16 +51,7 @@ class WeatherLocation extends Component {
                 <div>
                     <Location city={city} />
                 </div>
-                <div>
-                    <WeatherData data={data} />
-                </div>
-                <button
-                    type="button"
-                    className="btn btn-primary mt-3"
-                    onClick={this.handleUpdateClick}
-                >
-                    Actualizar
-                </button>
+                <div>{data ? <WeatherData data={data} /> : <CircularProgress/>}</div>
             </div>
         );
     }
