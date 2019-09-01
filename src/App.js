@@ -8,14 +8,31 @@ import LocationList from "./components/LocationList";
 import { Grid, Col, Row } from "react-flexbox-grid";
 
 import "./App.css";
+import ForecastExtended from "./components/ForescastExtended";
 
 const cities = ["Alicante, es", "Mendoza, ar", "Posadas, ar", "Lisboa, por"];
 
 class App extends Component {
+    constructor() {
+        super();
+        this.state = {
+            city: "Ciudad nueva"
+        };
+    }
+
     handleSelectedLocation = city => {
         console.log("handleSelectionLocation " + city);
+        this.setState({
+            city:city,
+        });
     };
+
+    componentDidUpdate() {
+        console.log("componentDidUpdate");
+    }
+
     render() {
+        const { city } = this.state;
         return (
             <Fragment>
                 <AppBar position="sticky">
@@ -35,7 +52,9 @@ class App extends Component {
                         </Col>
                         <Col xs={12} md={6}>
                             <Paper elevation={5}>
-                                <div className="detail">sd</div>
+                                <div className="detail">
+                                    <ForecastExtended city={city} />
+                                </div>
                             </Paper>
                         </Col>
                     </Row>
