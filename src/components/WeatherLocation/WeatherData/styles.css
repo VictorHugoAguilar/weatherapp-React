@@ -1,15 +1,12 @@
 .weatherDataCont {
-    padding: 10px;
+    padding: 3%;
     width: 100%;
     line-height: 25px;
     background-color: darkcyan;
     border-radius: 20px;
+    box-sizing: border-box;
 }
 
-.weatherExtraCont {
-    width: 60%;
-    display: inline-block;
-}
 
 .weatherTempConte {
     display: inline-block;
@@ -17,7 +14,13 @@
 }
 
 .weatherExtraConte {
+    width: 60%;
     display: inline-block;
+}
+
+.weatherExtraCont {
+    width: 100%;
+    text-align: right;
 }
 
 
@@ -34,7 +37,9 @@
 
 .tempDisplay {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 15px;
+    text-align: center;
+    width: 100%;
 }
 
 .temperature {
@@ -52,6 +57,7 @@
 .wicon {
     display: inline-block;
     color: coral;
+    text-align: center;
     margin-top: 5px;
-
+    width: 100%;
 }

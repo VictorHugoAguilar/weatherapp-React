@@ -39,7 +39,7 @@ const WeatherTemperature = props => {
         <div className="weatherTempCont">
             {getWeatherIcon(weatherState)}
             <div className="tempDisplay">
-            <span className="temperature">{`${temperature} `}</span>
+            <span className="temperature">{`${temperature.toFixed(0)} `}</span>
             <span className="temperatureType">{`º C`}</span>
             </div>
         </div>
