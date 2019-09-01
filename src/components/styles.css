@@ -6,3 +6,13 @@
     }
 }
 
+.forecastExtendedCont{
+    height: 88vh;
+    padding: 15px;
+}
+
+.forecast-title{
+    color:white;
+    font-size: 2em;
+}
+

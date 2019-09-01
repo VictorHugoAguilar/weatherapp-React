@@ -23,7 +23,7 @@ const transformWeather = weather_data => {
 
 const getWeatherState = weather => {
     const { id } = weather;
-    console.log(id);
+    // console.log(id);
     if (id < 300) return THUNDER;
     else if (id < 400) return DRIZZLE;
     else if (id < 600) return RAIN;

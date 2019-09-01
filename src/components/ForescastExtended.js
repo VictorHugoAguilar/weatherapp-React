@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
-import Typography from "@material-ui/core/Typography";
+import "./styles.css";
 
 class ForecastExtended extends Component {
     constructor(props) {
@@ -12,12 +11,10 @@ class ForecastExtended extends Component {
     render() {
         const { city } = this.props;
         return (
-            <div>
-                <h1>
-                    <Typography variant="inherit" color="primary">
-                        Pronostico extendido para {city}
-                    </Typography>
-                </h1>
+            <div className="forecastExtendedCont">
+                <span className="forecast-title">
+                    Pronóstico extendido para {city}
+                </span>
             </div>
         );
     }
