@@ -8,7 +8,7 @@ import LocationList from "./components/LocationList";
 import { Grid, Col, Row } from "react-flexbox-grid";
 
 import "./App.css";
-import ForecastExtended from "./components/ForescastExtended";
+import ForecastExtended from "./components/ForecastExtended";
 
 const cities = ["Alicante, es", "Mendoza, ar", "Posadas, ar", "Lisboa, por"];
 
