@@ -1,18 +1,30 @@
 @media (max-width: 64em) {
     .locationList {
-        max-height: 88vh;
+        max-height: 45vh;
         overflow: auto;
         margin-bottom: 20px;
     }
+
+    .forecastExtendedCont {
+        max-height: 40vh;
+        overflow: auto;
+        margin-bottom: 20px;
+        background-color: rgb(127, 225, 255);
+    }
 }
 
-.forecastExtendedCont{
-    height: 88vh;
+.locationList {
+    height: 90vh;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+.forecastExtendedCont {
+    background-color: rgb(127, 225, 255);
     padding: 15px;
 }
 
-.forecast-title{
-    color:white;
+.forecast-title {
+    color: white;
     font-size: 2em;
 }
-

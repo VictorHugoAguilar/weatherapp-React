@@ -8,8 +8,7 @@ const transformForecast = data => (
             moment.unix(item.dt).hour() === 2 ||
             moment.unix(item.dt).hour() === 11 ||
             moment.unix(item.dt).hour() === 20
-        )
-    ).map(item => (
+    )).map(item => (
         {
             weekDay: moment.unix(item.dt).format('ddd'),
             hour: moment.unix(item.dt).hour(),
