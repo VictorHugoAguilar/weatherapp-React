@@ -11,12 +11,15 @@ import { createStore } from "redux";
 
 import "./App.css";
 import ForecastExtended from "./components/ForecastExtended";
+import { setCity } from "./actions";
+
 
 const cities = ["Alicante, es", "Mendoza, ar", "Posadas, ar", "Lisboa, por"];
 
 // creamos el store
 const store = createStore(() => {},
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 
 class App extends Component {
     constructor() {
@@ -31,8 +34,8 @@ class App extends Component {
         this.setState({
             city: city
         });
-        const action = { type: "setCity", value: city };
-        store.dispatch(action);
+
+        store.dispatch(setCity(city));
     };
 
     componentDidUpdate() {
