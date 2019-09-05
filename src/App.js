@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
@@ -6,20 +7,16 @@ import Toolbar from "@material-ui/core/Toolbar";
 // importar componentes
 import LocationList from "./components/LocationList";
 import { Grid, Col, Row } from "react-flexbox-grid";
-// redux
-import { createStore } from "redux";
-
 import "./App.css";
+// importamos el componente de forecastExtended
 import ForecastExtended from "./components/ForecastExtended";
+// importamos las acciones
 import { setCity } from "./actions";
-
+// importamos el connect para conectar nuesta app react con redux
+// proporciana la capacidad de conectarse react con el store de redux
+import { connect } from "react-redux";
 
 const cities = ["Alicante, es", "Mendoza, ar", "Posadas, ar", "Lisboa, por"];
-
-// creamos el store
-const store = createStore(() => {},
-window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
 
 class App extends Component {
     constructor() {
@@ -35,7 +32,7 @@ class App extends Component {
             city: city
         });
 
-        store.dispatch(setCity(city));
+        this.props.setCity(city);
     };
 
     componentDidUpdate() {
@@ -84,4 +81,18 @@ class App extends Component {
     }
 }
 
-export default App;
+App.propTypes = {
+    setCity: PropTypes.func.isRequired,
+}
+
+const mapDispatchToPropsActions = dispatch => ({
+    setCity: value => dispatch(setCity(value))
+});
+
+// funcion que recibe dos funciones, y devuelve otra función
+const AppConnected = connect(
+    null,
+    mapDispatchToPropsActions
+)(App);
+
+export default AppConnected;
