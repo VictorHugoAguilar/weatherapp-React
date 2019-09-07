@@ -1,36 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React, { Component } from "react";
-
+import React from "react";
 import Location from "./Location";
 import WeatherData from "./WeatherData";
-import getUrlWeatherByCity from "../services/getUrlWeatherByCity";
-
 import PropTypes from "prop-types";
-
 import "./styles.css";
-
-import transformWeather from "../services/transformWeather";
-
 // Importamos spinner
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-// Class component funcional
-class WeatherLocation extends Component {
-    constructor(props) {
-        super(props);
-        const { city } = props;
-        this.state = {
-            city: city,
-            data: null
-        };
-    }
-
-    componentDidMount() {
-        // console.log("componentDidMount");
-        this.handleUpdateClick();
-    }
-
-    handleUpdateClick = () => {
+/* 
+import transformWeather from "../services/transformWeather";
+import getUrlWeatherByCity from "../services/getUrlWeatherByCity";
+handleUpdateClick = () => {
         const api_weather = getUrlWeatherByCity(this.state.city);
         fetch(api_weather)
             .then(resolve => {
@@ -49,25 +29,42 @@ class WeatherLocation extends Component {
         // console.log("Actualizado");
     };
 
-    render() {
-        const {onWeatherLocationClick} = this.props; 
-        const { city, data } = this.state;
-        return (
-            <div className="weatherLocationCont" onClick={onWeatherLocationClick} >
-                <div>
-                    <Location city={city} />
-                </div>
-                <div>
-                    {data ? <WeatherData data={data} /> : <CircularProgress />}
-                </div>
-            </div>
-        );
+
+    class WeatherLocation{
+        constructor(props) {
+        super(props);
+        const { city } = props;
+        this.state = {
+            city: city,
+            data: null
+        };
+    }}
+
+    ComponentDidMount() {
+        // console.log("componentDidMount");
+        this.handleUpdateClick();
     }
-}
+*/
+
+// Class component funcional
+const WeatherLocation = ({ city, data, onWeatherLocationClick }) => (
+    <div className="weatherLocationCont" onClick={onWeatherLocationClick}>
+        <div>
+            <Location city={city} />
+        </div>
+        <div>{data ? <WeatherData data={data} /> : <CircularProgress />}</div>
+    </div>
+);
 
 WeatherLocation.propsType = {
     city: PropTypes.string.isRequired,
     onWeatherLocationClick: PropTypes.func,
+    data: PropTypes.shape({
+        temperature: PropTypes.number.isRequired,
+        weatherState: PropTypes.string.isRequired,
+        humidity: PropTypes.number.isRequired,
+        wind: PropTypes.string.isRequired
+    })
 };
 
 export default WeatherLocation;
