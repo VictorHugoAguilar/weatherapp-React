@@ -11,7 +11,7 @@ const LocationList = ({ cities, onSelectedLocation }) => {
 
     const hanldeWeatherLocationClick = city => {
         //console.log(city);
-        console.log("handleWeatherLocationClick");
+        // console.log("handleWeatherLocationClick");
         onSelectedLocation(city);
     };
 

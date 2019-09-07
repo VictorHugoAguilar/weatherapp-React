@@ -15,7 +15,7 @@ class LocationListContainer extends Component {
     }
 
     handleSelectedLocation = city => {
-        console.log("handleSelectedLocation");
+        // console.log("handleSelectedLocation");
         this.props.setSelectedCity(city);
     };
 

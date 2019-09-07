@@ -13,7 +13,7 @@ export const cities = (state = {}, action) => {
             const { city, forecastData } = action.payload;
             return {
                 ...state,
-                [city]: {...state[city], forecastData: forecastData  }
+                [city]: {...state[city], forecastData: forecastData, forecastDataDate: new Date()  }
             };
         }
         case GET_WEATHER_CITY: {
