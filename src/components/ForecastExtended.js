@@ -1,24 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
 import ForecastItem from "./ForecastItem";
 import CircularProgress from "@material-ui/core/CircularProgress";
+
+/* Refactor a SFC
 import { apiKey, metric } from "../constants/api_url";
 import transformForecast from "./services/transformForecast";
 const url = "https://api.openweathermap.org/data/2.5/forecast";
+*/
 
-class ForecastExtended extends Component {
-    constructor() {
-        super();
-        this.state = {
-            forecastData: null
-        };
-    }
-
+/* Refactor a SFC
     componentDidMount() {
-        this.updateCity(this.props.city);
-    }
-
+        //this.updateCity(this.props.city);
+    } 
+     
     updateCity = city => {
         const url_forecast = `${url}?q=${city}&appid=${apiKey}${metric}`;
         fetch(url_forecast)
@@ -31,54 +27,53 @@ class ForecastExtended extends Component {
                 this.setState({ forecastData: forescastData });
             })
             .catch(error => console.log(error));
-    }
-
-    componentWillUpdate(nextProps){
-        if(nextProps.city !== this.props.city){
-            this.setState({forecastData:null});
+    };
+    
+    componentWillUpdate(nextProps) {
+        if (nextProps.city !== this.props.city) {
+            this.setState({ forecastData: null });
             this.updateCity(nextProps.city);
         }
     }
+    */
 
-    renderProgress = () => {
-        return (
+const renderProgress = () => {
+    return (
+        <div>
+            <CircularProgress color="secondary" /> Cargando...{" "}
+        </div>
+    );
+};
+
+const renderForecastItemDays = forecastData => {
+    return forecastData.map(forecast => (
+        <ForecastItem
+            key={`${forecast.weekDay}${forecast.hour}`}
+            weekDay={forecast.weekDay}
+            hour={forecast.hour}
+            data={forecast.data}
+        />
+    ));
+};
+
+const ForecastExtended = ({ city, forecastData }) => (
+    <div className="forecastExtendedCont">
+        {forecastData ? (
             <div>
-                <CircularProgress color="secondary" /> Cargando...{" "}
-            </div>
-        );
-    };
-
-    renderForecastItemDays(forecastData) {
-        // console.log(forescastData);
-        // debugger;
-        return forecastData.map(forecast => (
-            <ForecastItem
-                key={`${forecast.weekDay}${forecast.hour}`}
-                weekDay={forecast.weekDay}
-                hour={forecast.hour}
-                data={forecast.data}
-            />
-        ));
-    }
-
-    render() {
-        const { city } = this.props;
-        const { forecastData } = this.state;
-        return (
-            <div className="forecastExtendedCont">
                 <h3 className="forecast-title">
                     Pronóstico extendido para {city}
                 </h3>
-                {forecastData
-                    ? this.renderForecastItemDays(forecastData)
-                    : this.renderProgress()}
+                {renderForecastItemDays(forecastData)}
             </div>
-        );
-    }
-}
+        ) : (
+            renderProgress()
+        )}
+    </div>
+);
 
 ForecastExtended.propTypes = {
-    city: PropTypes.string.isRequired
+    city: PropTypes.string.isRequired,
+    forecastData: PropTypes.array
 };
 
 export default ForecastExtended;
