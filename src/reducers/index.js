@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { cities } from "./cities";
+import { cities, getForcastDataFromCities as _getForcastDataFromCities } from "./cities";
 import { city } from "./city";
 
 // combinereducers es una funcion que espera un objeto 
@@ -11,3 +11,7 @@ export default combineReducers({
     cities,
     city
 });
+
+// creamos los selectores para desacoplar la info de la app
+export const getCity = state => state.city;
+export const getForcastDataFromCities = state => (_getForcastDataFromCities(state.cities, getCity(state)));
